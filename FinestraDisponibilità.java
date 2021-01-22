@@ -22,6 +22,8 @@ public class FinestraDisponibilit‡ extends JFrame {
 	private JTextField PrezzoTot_TF;
 	private JTextField DispInMagazzino_TF;
 	private double PrezzoAlKiloDouble;
+	private JTextField textField;
+	
 	
 	
 	public void setQuantit‡DaSottrarreDouble(double quantit‡DaSottrarreDouble) {
@@ -66,37 +68,6 @@ public class FinestraDisponibilit‡ extends JFrame {
 		contentPane.add(Quantit‡_TF);
 		Quantit‡_TF.setColumns(10);
 		
-		JButton ConfermaButton = new JButton("Conferma");
-		ConfermaButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String Quantit‡DaSottrarreString=Quantit‡_TF.getText();
-				try {
-					Quantit‡DaSottrarreDouble = Double.parseDouble(Quantit‡DaSottrarreString);	
-					//Quantit‡_TF.setText(null);
-				}
-				catch (NumberFormatException Nfe){
-					System.err.println("");
-				}
-				DispInMagazzino_TF.setText(c.SottraiQuantit‡());
-				ConfermaButton.setEnabled(false);
-				Quantit‡_TF.setEditable(false);
-			}
-		});
-		ConfermaButton.setBounds(294, 88, 109, 23);
-		contentPane.add(ConfermaButton);
-		
-		JLabel PrezzoAlKilo_JLb = new JLabel("Prezzo al Kilo:");
-		PrezzoAlKilo_JLb.setBounds(10, 120, 94, 14);
-		contentPane.add(PrezzoAlKilo_JLb);
-		
-		PrezzoAlKilo_TF = new JTextField();
-		PrezzoAlKilo_TF.setHorizontalAlignment(SwingConstants.CENTER);
-		PrezzoAlKilo_TF.setText("2");
-		PrezzoAlKilo_TF.setEditable(false);
-		PrezzoAlKilo_TF.setBounds(94, 117, 44, 20);
-		contentPane.add(PrezzoAlKilo_TF);
-		PrezzoAlKilo_TF.setColumns(10);
-		
 		JButton CalcolaPrezzoButton = new JButton("Calcola Prezzo");
 		CalcolaPrezzoButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -108,11 +79,49 @@ public class FinestraDisponibilit‡ extends JFrame {
 					System.err.println("");
 				}
 				PrezzoTot_TF.setText(c.CalcolaPrezzo());
+				c.setQuantit‡TfToZero();
 				CalcolaPrezzoButton.setEnabled(false);
 			}
 		});
 		CalcolaPrezzoButton.setBounds(10, 145, 126, 23);
 		contentPane.add(CalcolaPrezzoButton);
+		
+		JButton ConfermaButton = new JButton("Conferma");
+		ConfermaButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String Quantit‡DaSottrarreString=Quantit‡_TF.getText();
+				try {
+					Quantit‡DaSottrarreDouble = Double.parseDouble(Quantit‡DaSottrarreString);	
+				}
+				catch (NumberFormatException Nfe){
+					System.err.println("");
+				}
+				DispInMagazzino_TF.setText(c.SottraiQuantit‡());
+				ConfermaButton.setEnabled(false);
+				Quantit‡_TF.setEditable(false);
+//				if((c.SottraiQuantit‡().equals("Non ci sono abbastanza scorte"))){
+//					Quantit‡_TF.setEditable(false);
+//					ConfermaButton.setEnabled(false);
+//					CalcolaPrezzoButton.setEnabled(false);
+//				}
+			}
+		});
+		ConfermaButton.setBounds(294, 88, 109, 23);
+		contentPane.add(ConfermaButton);
+		
+		JLabel PrezzoAlKilo_JLb = new JLabel("Prezzo al Kilo:");
+		PrezzoAlKilo_JLb.setBounds(10, 120, 94, 14);
+		contentPane.add(PrezzoAlKilo_JLb);
+		
+		PrezzoAlKilo_TF = new JTextField();
+		PrezzoAlKilo_TF.setHorizontalAlignment(SwingConstants.CENTER);
+		PrezzoAlKilo_TF.setText("2.00");
+		PrezzoAlKilo_TF.setEditable(false);
+		PrezzoAlKilo_TF.setBounds(94, 117, 35, 20);
+		contentPane.add(PrezzoAlKilo_TF);
+		PrezzoAlKilo_TF.setColumns(10);
+		
+		
 		
 		JLabel PrezzoTot_JLb = new JLabel("Prezzo Totale:");
 		PrezzoTot_JLb.setBounds(10, 179, 109, 14);
@@ -139,22 +148,40 @@ public class FinestraDisponibilit‡ extends JFrame {
 		DispInMagazzino_TF.setColumns(10);
 		
 		JButton AcquistaDiNuovoButton = new JButton("Acquista di nuovo");
-//		AcquistaDiNuovoButton.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
+		AcquistaDiNuovoButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {	
+//				if((c.SottraiQuantit‡().equals("Non ci sono abbastanza scorte")) || (c.SottraiQuantit‡().equals("Abbiamo esaurito le scorte in magazzino"))){
+//					AcquistaDiNuovoButton.setEnabled(false);
+//				}
+//				else {
+//					Quantit‡_TF.setText("");
+//					ConfermaButton.setEnabled(true);
+//					CalcolaPrezzoButton.setEnabled(true);
+//					Quantit‡_TF.setEditable(true);
+//				}
 //				
-//				String Ricopia1 = PrezzoTot_TF.getText();
-//				String Ricopia2= DispInMagazzino_TF.getText();
-//				Controller c= new Controller();
-//				c.RefreshFinestraDisponibilit‡();
-//				PrezzoTot_TF.setText(Ricopia1);
-//				DispInMagazzino_TF.setText(Ricopia2);
-//			}
-//		});
+			}
+		});
 		AcquistaDiNuovoButton.setBounds(268, 189, 147, 30);
 		contentPane.add(AcquistaDiNuovoButton);
 		
+
 		JButton TornaHomeButton = new JButton("Torna alla home");
+		TornaHomeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				c.TornaAllaHome();
+			}
+		});
 		TornaHomeButton.setBounds(268, 230, 147, 30);
 		contentPane.add(TornaHomeButton);
+		
+		textField = new JTextField();
+		textField.setHorizontalAlignment(SwingConstants.CENTER);
+		textField.setText("\u20AC");
+		textField.setBounds(133, 117, 16, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
 	}
+	
+
 }
