@@ -5,6 +5,7 @@ public class Frutta extends Prodotto{
 	private Date DataDiRaccolta;
 	private String Modalit‡DiConservazione;
 	
+	
 	public Date getDataDiRaccolta() {
 		return DataDiRaccolta;
 	}

@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import java.awt.Font;
 
 public class FinestraDisponibilità extends JFrame {
 
@@ -22,7 +23,7 @@ public class FinestraDisponibilità extends JFrame {
 	private JTextField PrezzoTot_TF;
 	private JTextField DispInMagazzino_TF;
 	private double PrezzoAlKiloDouble;
-	private JTextField textField;
+	public Prodotto prod = new Prodotto();
 	
 	
 	
@@ -43,6 +44,7 @@ public class FinestraDisponibilità extends JFrame {
 	 * Create the frame.
 	 */
 	public FinestraDisponibilità(Controller c) {
+		setTitle("Frutta");
 		
 		IlController=c;
 		
@@ -115,6 +117,7 @@ public class FinestraDisponibilità extends JFrame {
 		
 		PrezzoAlKilo_TF = new JTextField();
 		PrezzoAlKilo_TF.setHorizontalAlignment(SwingConstants.CENTER);
+//		PrezzoAlKilo_TF.setText(String.valueOf(prod.getPrezzoAlKilo()));
 		PrezzoAlKilo_TF.setText("2.00");
 		PrezzoAlKilo_TF.setEditable(false);
 		PrezzoAlKilo_TF.setBounds(94, 117, 35, 20);
@@ -175,13 +178,10 @@ public class FinestraDisponibilità extends JFrame {
 		TornaHomeButton.setBounds(268, 230, 147, 30);
 		contentPane.add(TornaHomeButton);
 		
-		textField = new JTextField();
-		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setText("\u20AC");
-		textField.setBounds(133, 117, 16, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		JLabel lblNewLabel = new JLabel("\u20AC");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel.setBounds(125, 113, 28, 24);
+		contentPane.add(lblNewLabel);
 	}
-	
-
 }
