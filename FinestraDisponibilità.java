@@ -12,12 +12,12 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
-public class FinestraDisponibilit‡ extends JFrame {
+public class FinestraDisponibilit√† extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField Quantit‡_TF;
+	private JTextField Quantit√†_TF;
 	public Controller IlController;
-	private double Quantit‡DaSottrarreDouble;
+	private double Quantit√†DaSottrarreDouble;
 	private JTextField PrezzoAlKilo_TF;
 	private JTextField PrezzoTot_TF;
 	private JTextField DispInMagazzino_TF;
@@ -27,11 +27,11 @@ public class FinestraDisponibilit‡ extends JFrame {
 	
 	
 	
-	public void setQuantit‡DaSottrarreDouble(double quantit‡DaSottrarreDouble) {
-		Quantit‡DaSottrarreDouble = 0.0;
+	public void setQuantit√†DaSottrarreDouble(double quantit√†DaSottrarreDouble) {
+		Quantit√†DaSottrarreDouble = 0.0;
 	}
-	public double getQuantit‡DaSottrarreDouble() {
-		return Quantit‡DaSottrarreDouble;
+	public double getQuantit√†DaSottrarreDouble() {
+		return Quantit√†DaSottrarreDouble;
 	}
 	
 	public double getPrezzoAlKiloDouble() {
@@ -43,7 +43,7 @@ public class FinestraDisponibilit‡ extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public FinestraDisponibilit‡(Controller c) {
+	public FinestraDisponibilit√†(Controller c) {
 		
 		IlController=c;
 		
@@ -58,16 +58,16 @@ public class FinestraDisponibilit‡ extends JFrame {
 		Frutta_JLb.setBounds(10, 63, 78, 14);
 		contentPane.add(Frutta_JLb);
 		
-		JLabel Quantit‡_JLb = new JLabel("Quantit\u00E0 che desidera aquistare:");
-		Quantit‡_JLb.setBounds(10, 88, 190, 14);
-		contentPane.add(Quantit‡_JLb);
+		JLabel Quantit√†_JLb = new JLabel("Quantit\u00E0 che desidera aquistare:");
+		Quantit√†_JLb.setBounds(10, 88, 190, 14);
+		contentPane.add(Quantit√†_JLb);
 		
-		Quantit‡_TF = new JTextField();
-		Quantit‡_TF.setHorizontalAlignment(SwingConstants.CENTER);
-		Quantit‡_TF.setToolTipText("Inserire quantit\u00E0 desiderata");
-		Quantit‡_TF.setBounds(198, 88, 86, 20);
-		contentPane.add(Quantit‡_TF);
-		Quantit‡_TF.setColumns(10);
+		Quantit√†_TF = new JTextField();
+		Quantit√†_TF.setHorizontalAlignment(SwingConstants.CENTER);
+		Quantit√†_TF.setToolTipText("Inserire quantit\u00E0 desiderata");
+		Quantit√†_TF.setBounds(198, 88, 86, 20);
+		contentPane.add(Quantit√†_TF);
+		Quantit√†_TF.setColumns(10);
 		
 		JButton CalcolaPrezzoButton = new JButton("Calcola Prezzo");
 		CalcolaPrezzoButton.addActionListener(new ActionListener() {
@@ -82,7 +82,7 @@ public class FinestraDisponibilit‡ extends JFrame {
 				PrezzoTot_TF.setText(c.CalcolaPrezzo());
 				if((DispInMagazzinoString.equals("Queste erano le ultime scorte in magazzino"))){
 					PrezzoTot_TF.setText(PrezzoTot_TF.getText());
-					c.setQuantit‡TfToZero();
+					c.setQuantit√†TfToZero();
 					CalcolaPrezzoButton.setEnabled(false);
 				};
 			}
@@ -93,24 +93,24 @@ public class FinestraDisponibilit‡ extends JFrame {
 		JButton ConfermaButton = new JButton("Conferma");
 		ConfermaButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String Quantit‡DaSottrarreString=Quantit‡_TF.getText();
+				String Quantit√†DaSottrarreString=Quantit√†_TF.getText();
 				try {
-					Quantit‡DaSottrarreDouble = Double.parseDouble(Quantit‡DaSottrarreString);	
+					Quantit√†DaSottrarreDouble = Double.parseDouble(Quantit√†DaSottrarreString);	
 				}
 				catch (NumberFormatException Nfe){
 					System.err.println("");
 				}
-				DispInMagazzinoString=c.SottraiQuantit‡();
+				DispInMagazzinoString=c.SottraiQuantit√†();
 				DispInMagazzino_TF.setText(DispInMagazzinoString);
 				if((DispInMagazzinoString.equals("Non ci sono abbastanza scorte"))){
-					Quantit‡_TF.setEditable(false);
+					Quantit√†_TF.setEditable(false);
 					ConfermaButton.setEnabled(false);
 					CalcolaPrezzoButton.setEnabled(false);
 				}
 					else {
 						DispInMagazzino_TF.setText(DispInMagazzinoString);
 						ConfermaButton.setEnabled(false);
-						Quantit‡_TF.setEditable(false);
+						Quantit√†_TF.setEditable(false);
 					}
 				
 			}
@@ -165,10 +165,11 @@ public class FinestraDisponibilit‡ extends JFrame {
 					AcquistaDiNuovoButton.setEnabled(false);
 				}
 				else {
-					Quantit‡_TF.setText("");
+					Quantit√†_TF.setText("");
+					c.setQuantit√†TfToZero();
 					ConfermaButton.setEnabled(true);
 					CalcolaPrezzoButton.setEnabled(true);
-					Quantit‡_TF.setEditable(true);
+					Quantit√†_TF.setEditable(true);
 				}
 				
 			}
