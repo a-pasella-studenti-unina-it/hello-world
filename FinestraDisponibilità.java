@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import java.awt.Font;
 
 public class FinestraDisponibilit‡ extends JFrame {
 
@@ -22,8 +23,8 @@ public class FinestraDisponibilit‡ extends JFrame {
 	private JTextField PrezzoTot_TF;
 	private JTextField DispInMagazzino_TF;
 	private double PrezzoAlKiloDouble;
-	private JTextField textField;
 	private String DispInMagazzinoString;
+	public Frutta fruit = new Frutta();
 	
 	
 	
@@ -80,9 +81,9 @@ public class FinestraDisponibilit‡ extends JFrame {
 					System.err.println("");
 				}
 				PrezzoTot_TF.setText(c.CalcolaPrezzo());
+				CalcolaPrezzoButton.setEnabled(false);
 				if((DispInMagazzinoString.equals("Queste erano le ultime scorte in magazzino"))){
 					PrezzoTot_TF.setText(PrezzoTot_TF.getText());
-					c.setQuantit‡TfToZero();
 					CalcolaPrezzoButton.setEnabled(false);
 				};
 			}
@@ -124,6 +125,7 @@ public class FinestraDisponibilit‡ extends JFrame {
 		
 		PrezzoAlKilo_TF = new JTextField();
 		PrezzoAlKilo_TF.setHorizontalAlignment(SwingConstants.CENTER);
+//		PrezzoAlKilo_TF.setText(String.valueOf(fruit.getPrezzoAlKilo()));
 		PrezzoAlKilo_TF.setText("2.00");
 		PrezzoAlKilo_TF.setEditable(false);
 		PrezzoAlKilo_TF.setBounds(94, 117, 35, 20);
@@ -166,6 +168,7 @@ public class FinestraDisponibilit‡ extends JFrame {
 				}
 				else {
 					Quantit‡_TF.setText("");
+					c.setQuantit‡TfToZero();
 					ConfermaButton.setEnabled(true);
 					CalcolaPrezzoButton.setEnabled(true);
 					Quantit‡_TF.setEditable(true);
@@ -186,12 +189,10 @@ public class FinestraDisponibilit‡ extends JFrame {
 		TornaHomeButton.setBounds(268, 230, 147, 30);
 		contentPane.add(TornaHomeButton);
 		
-		textField = new JTextField();
-		textField.setHorizontalAlignment(SwingConstants.CENTER);
-		textField.setText("\u20AC");
-		textField.setBounds(133, 117, 16, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		JLabel lblNewLabel = new JLabel("\u20AC");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel.setBounds(131, 115, 35, 23);
+		contentPane.add(lblNewLabel);
 		
 	}
 }

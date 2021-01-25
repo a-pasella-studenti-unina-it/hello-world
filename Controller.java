@@ -9,7 +9,6 @@ public class Controller {
 	HomePage hp = new HomePage(this);
 	
 	
-	
 	public static void main(String[] args) {
 		Controller c = new Controller();
 		
@@ -17,6 +16,7 @@ public class Controller {
 	
 	public Controller() {
 		hp.setVisible(true);
+		
 	}
 	
 	public void ApriFinestraFrutta() {

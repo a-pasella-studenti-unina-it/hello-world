@@ -12,7 +12,6 @@ public class Prodotto {
 	
 	public ArrayList<Carrello> IlCarrello= new ArrayList<Carrello>();
 	
-	ProdottoDAO prodDAO = new ProdottoDAO();
 
 	public int getDisponibilità() {
 		return Disponibilità;
