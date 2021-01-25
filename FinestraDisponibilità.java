@@ -82,7 +82,6 @@ public class FinestraDisponibilità extends JFrame {
 				PrezzoTot_TF.setText(c.CalcolaPrezzo());
 				if((DispInMagazzinoString.equals("Queste erano le ultime scorte in magazzino"))){
 					PrezzoTot_TF.setText(PrezzoTot_TF.getText());
-					c.setQuantitàTfToZero();
 					CalcolaPrezzoButton.setEnabled(false);
 				};
 			}
