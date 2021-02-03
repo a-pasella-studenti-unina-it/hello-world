@@ -15,6 +15,8 @@ public class Controller {
 	public double PrezzoTotale=0.0;
 	HomePage hp = new HomePage(this);
 	AcquistareQuantit‡Minore PopUp=new AcquistareQuantit‡Minore(this);
+	Frutta fr = new Frutta();
+	FruttaDAO fr_dao = new FruttaDAO();
 	
 	
 	
@@ -100,5 +102,13 @@ public class Controller {
 				return"Queste erano le ultime scorte in magazzino";	
 			}	
 		}
+	}
+	
+	public Frutta ConnettiAlDB() {
+		
+		fr = fr_dao.ConnessioneDB(fr);
+		
+		return fr;
+		
 	}
 }

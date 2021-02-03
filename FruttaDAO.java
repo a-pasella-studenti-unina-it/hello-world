@@ -17,6 +17,7 @@ public class FruttaDAO {
 		Statement st = conn.createStatement();
 		ResultSet rs = st.executeQuery("SELECT * FROM prodotto, frutta WHERE prodotto.codice_id=frutta.id;");
 	
+		
 		while(rs.next()) {
 			
 			f.setNomeProdotto(rs.getString("nome_prodotto"));
@@ -27,7 +28,8 @@ public class FruttaDAO {
 			f.setDisponibilit‡(rs.getInt("disponibilita"));
 			f.setDataDiRaccolta(rs.getDate("data_raccolta"));
 			f.setModalit‡DiConservazione(rs.getString("modalita_conservazione"));
-
+	
+		
 		}
 		
 			rs.close();
@@ -40,4 +42,19 @@ public class FruttaDAO {
 	
 
 }
+	
+	public Frutta ConnessioneDB(Frutta frutta) {
+		
+		frutta.setNomeProdotto(f.getNomeProdotto());
+		frutta.setMarca(f.getMarca());
+		frutta.setCodiceID(f.getCodiceID());
+		frutta.setPrezzoAlKilo(f.getPrezzoAlKilo());
+		frutta.setDataDiScadenza(f.getDataDiScadenza());
+		frutta.setDisponibilit‡(f.getDisponibilit‡());
+		frutta.setDataDiRaccolta(f.getDataDiRaccolta());
+		frutta.setModalit‡DiConservazione(f.getModalit‡DiConservazione());
+		
+		
+		return frutta;
+	}
 	}

@@ -235,7 +235,8 @@ public class FinestraFrutta extends JFrame {
 				TipoFrutta = (String) FruttaComboBox.getSelectedItem();
 				
 				if(TipoFrutta.equals("Mele")) {
-					PrezzoAlKilo_TF.setText("1.82");
+					//PrezzoAlKilo_TF.setText("1.82");
+					PrezzoAlKilo_TF.setText(String.valueOf(IlController.ConnettiAlDB().getPrezzoAlKilo()));
 					Quantità_TF.setEditable(true);
 				}
 				
