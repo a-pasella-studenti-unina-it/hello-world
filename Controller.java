@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.ListIterator;
+
 import javax.swing.JDialog;
 import javax.swing.JTextField;
 
@@ -15,8 +18,9 @@ public class Controller {
 	public double PrezzoTotale=0.0;
 	HomePage hp = new HomePage(this);
 	AcquistareQuantit‡Minore PopUp=new AcquistareQuantit‡Minore(this);
-	Frutta fr = new Frutta();
+	LinkedList<Frutta> frutti = new LinkedList<Frutta>();
 	FruttaDAO fr_dao = new FruttaDAO();
+	ListIterator<Frutta> iterator = frutti.listIterator();
 	
 	
 	
@@ -104,11 +108,25 @@ public class Controller {
 		}
 	}
 	
-	public Frutta ConnettiAlDB() {
+	public Frutta ConnettiAlDB(String s) {
 		
-		fr = fr_dao.ConnessioneDB(fr);
+		Frutta fr = new Frutta();
+		int i = 0;
+		
+		frutti = fr_dao.ConnessioneDB(fr);
+		
+		while(i!=2) {
+			if(frutti.get(i).getNomeProdotto().equals(s)) {
+				return frutti.get(i);
+			} else {
+				i++;
+			}
+		}
+		
 		
 		return fr;
-		
-	}
+		}
+	
 }
+
+

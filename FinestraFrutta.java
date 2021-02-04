@@ -235,8 +235,7 @@ public class FinestraFrutta extends JFrame {
 				TipoFrutta = (String) FruttaComboBox.getSelectedItem();
 				
 				if(TipoFrutta.equals("Mele")) {
-					//PrezzoAlKilo_TF.setText("1.82");
-					PrezzoAlKilo_TF.setText(String.valueOf(IlController.ConnettiAlDB().getPrezzoAlKilo()));
+					PrezzoAlKilo_TF.setText(String.valueOf(IlController.ConnettiAlDB("Mela").getPrezzoAlKilo()));
 					Quantità_TF.setEditable(true);
 				}
 				
@@ -246,7 +245,7 @@ public class FinestraFrutta extends JFrame {
 				}
 				
 				if(TipoFrutta.equals("Banane")) {
-					PrezzoAlKilo_TF.setText("2.02");
+					PrezzoAlKilo_TF.setText(String.valueOf(IlController.ConnettiAlDB("Banana").getPrezzoAlKilo()));
 					Quantità_TF.setEditable(true);
 				}
 

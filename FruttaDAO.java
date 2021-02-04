@@ -1,8 +1,11 @@
 import java.sql.*;
+import java.util.LinkedList;
+import java.util.ListIterator;
 
 public class FruttaDAO {
 	
-	Frutta f = new Frutta();
+	LinkedList<Frutta> frutti = new LinkedList<Frutta>();
+	ListIterator<Frutta> iterator = frutti.listIterator();
 	
 	public FruttaDAO(){
 	try {
@@ -20,6 +23,8 @@ public class FruttaDAO {
 		
 		while(rs.next()) {
 			
+			Frutta f = new Frutta();
+			
 			f.setNomeProdotto(rs.getString("nome_prodotto"));
 			f.setMarca(rs.getString("marca"));
 			f.setCodiceID(rs.getString("codice_id"));
@@ -28,7 +33,8 @@ public class FruttaDAO {
 			f.setDisponibilit‡(rs.getInt("disponibilita"));
 			f.setDataDiRaccolta(rs.getDate("data_raccolta"));
 			f.setModalit‡DiConservazione(rs.getString("modalita_conservazione"));
-	
+			
+			frutti.add(f);
 		
 		}
 		
@@ -43,18 +49,24 @@ public class FruttaDAO {
 
 }
 	
-	public Frutta ConnessioneDB(Frutta frutta) {
+	public LinkedList<Frutta> ConnessioneDB(Frutta frutta) {
 		
-		frutta.setNomeProdotto(f.getNomeProdotto());
-		frutta.setMarca(f.getMarca());
-		frutta.setCodiceID(f.getCodiceID());
-		frutta.setPrezzoAlKilo(f.getPrezzoAlKilo());
-		frutta.setDataDiScadenza(f.getDataDiScadenza());
-		frutta.setDisponibilit‡(f.getDisponibilit‡());
-		frutta.setDataDiRaccolta(f.getDataDiRaccolta());
-		frutta.setModalit‡DiConservazione(f.getModalit‡DiConservazione());
+		int i = 0;
 		
+		while(i!=2) {
+		frutta.setNomeProdotto(frutti.get(i).getNomeProdotto());
+		frutta.setMarca(frutti.get(i).getMarca());
+		frutta.setCodiceID(frutti.get(i).getCodiceID());
+		frutta.setPrezzoAlKilo(frutti.get(i).getPrezzoAlKilo());
+		frutta.setDataDiScadenza(frutti.get(i).getDataDiScadenza());
+		frutta.setDisponibilit‡(frutti.get(i).getDisponibilit‡());
+		frutta.setDataDiRaccolta(frutti.get(i).getDataDiRaccolta());
+		frutta.setModalit‡DiConservazione(frutti.get(i).getModalit‡DiConservazione());
 		
-		return frutta;
+		frutti.add(frutta);
+		i++;
+		}
+		
+		return frutti;
 	}
 	}
