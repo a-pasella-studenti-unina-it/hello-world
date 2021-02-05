@@ -115,14 +115,13 @@ public class Controller {
 		
 		frutti = fr_dao.ConnessioneDB(fr);
 		
-		while(i!=2) {
+		for(Frutta f : frutti) {
 			if(frutti.get(i).getNomeProdotto().equals(s)) {
 				return frutti.get(i);
 			} else {
 				i++;
 			}
 		}
-		
 		
 		return fr;
 		}

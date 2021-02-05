@@ -240,7 +240,7 @@ public class FinestraFrutta extends JFrame {
 				}
 				
 				if(TipoFrutta.equals("Pere")) {
-					PrezzoAlKilo_TF.setText("2.92");
+					PrezzoAlKilo_TF.setText(String.valueOf(IlController.ConnettiAlDB("Pera").getPrezzoAlKilo()));
 					Quantità_TF.setEditable(true);
 				}
 				
@@ -250,22 +250,22 @@ public class FinestraFrutta extends JFrame {
 				}
 
 				if(TipoFrutta.equals("Pesche")) {
-					PrezzoAlKilo_TF.setText("2.47");
+					PrezzoAlKilo_TF.setText(String.valueOf(IlController.ConnettiAlDB("Pesca").getPrezzoAlKilo()));
 					Quantità_TF.setEditable(true);
 				}
 				
 				if(TipoFrutta.equals("Ciliegie")) {
-					PrezzoAlKilo_TF.setText("3.27");
+					PrezzoAlKilo_TF.setText(String.valueOf(IlController.ConnettiAlDB("Ciliegia").getPrezzoAlKilo()));
 					Quantità_TF.setEditable(true);
 				}
 				
 				if(TipoFrutta.equals("Albicocche")) {
-					PrezzoAlKilo_TF.setText("3.10");
+					PrezzoAlKilo_TF.setText(String.valueOf(IlController.ConnettiAlDB("Albicocca").getPrezzoAlKilo()));
 					Quantità_TF.setEditable(true);
 				}
 				
 				if(TipoFrutta.equals("Arance")) {
-					PrezzoAlKilo_TF.setText("2.17");
+					PrezzoAlKilo_TF.setText(String.valueOf(IlController.ConnettiAlDB("Arancia").getPrezzoAlKilo()));
 					Quantità_TF.setEditable(true);
 				}
 				

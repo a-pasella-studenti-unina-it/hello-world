@@ -5,7 +5,6 @@ import java.util.ListIterator;
 public class FruttaDAO {
 	
 	LinkedList<Frutta> frutti = new LinkedList<Frutta>();
-	ListIterator<Frutta> iterator = frutti.listIterator();
 	
 	public FruttaDAO(){
 	try {
@@ -50,22 +49,6 @@ public class FruttaDAO {
 }
 	
 	public LinkedList<Frutta> ConnessioneDB(Frutta frutta) {
-		
-		int i = 0;
-		
-		while(i!=2) {
-		frutta.setNomeProdotto(frutti.get(i).getNomeProdotto());
-		frutta.setMarca(frutti.get(i).getMarca());
-		frutta.setCodiceID(frutti.get(i).getCodiceID());
-		frutta.setPrezzoAlKilo(frutti.get(i).getPrezzoAlKilo());
-		frutta.setDataDiScadenza(frutti.get(i).getDataDiScadenza());
-		frutta.setDisponibilit‡(frutti.get(i).getDisponibilit‡());
-		frutta.setDataDiRaccolta(frutti.get(i).getDataDiRaccolta());
-		frutta.setModalit‡DiConservazione(frutti.get(i).getModalit‡DiConservazione());
-		
-		frutti.add(frutta);
-		i++;
-		}
 		
 		return frutti;
 	}
